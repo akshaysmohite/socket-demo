@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Socket io demo</h1>
+    <button onclick="clickedButton()">click me please</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('/');
+        socket.on('a',function(data){
+            console.log(data);
+        });
+
+        socket.on('received',function(data){
+            console.log(data);
+        });
+
+        function clickedButton(){
+            socket.emit('buttonclicked',{message:"some button is clicked"});
+        }
+    </script>
+</body>
+</html>
